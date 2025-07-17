@@ -1,46 +1,60 @@
 .container {
-    margin-top: 20px;
+    margin: 20px auto;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: fit-content;
+    max-width: 90%;
+    width: 100%;
     padding: 30px;
     border-radius: 10px;
+    box-sizing: border-box;
 }
+
 .heading {
     color: #333;
-    font-size: 40px;
+    font-size: 32px;
     font-weight: bold;
     font-family: sans-serif;
+    text-align: center;
 }
+
 label {
     font-weight: bold;
+    align-self: flex-start;
 }
+
 input {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: 30px;
     margin-top: 5px;
     margin-bottom: 10px;
     border-radius: 8px;
     border: 1.5px solid gray;
     padding-left: 5px;
+    box-sizing: border-box;
 }
+
 button {
     display: block;
     margin: 10px auto;
-    padding: 5px 22px;
+    padding: 10px 22px;
     background-color: #333;
     color: #fff;
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 8px;
-    border: 0px;
+    border: none;
+    width: 100%;
+    max-width: 200px;
 }
+
 button:hover {
     opacity: 90%;
     cursor: pointer;
 }
+
 button:active {
     opacity: 50%;
 }

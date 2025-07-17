@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "angular-app-12112"
-  }
+    "default": "angular-app-12112",
+    "staging": "angular-app-12112"
+  },
+  "targets": {},
+  "etags": {}
 }
