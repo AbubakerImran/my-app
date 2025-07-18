@@ -36,9 +36,9 @@ import { CommonModule } from '@angular/common';
     <ng-template #dashboard>
       <div class="dashboard-container">
         <p class="heading">Dashboard</p>
-        <p class="details">Name: <span>{{ name() }}</span></p>
-        <p class="details">Phone: <span>{{ number() }}</span></p>
-        <p class="details">Email: <span>{{ email() }}</span></p>
+        <p class="details">Name: <span>{{ Name() }}</span></p>
+        <p class="details">Phone: <span>{{ Number() }}</span></p>
+        <p class="details">Email: <span>{{ Email() }}</span></p>
         <button (click)="signout()" type="button">Sign out</button>
       </div>
     </ng-template>
@@ -61,9 +61,9 @@ export class App {
 
           const data = userDoc.data();
           if (data) {
-            this.name.set(data['name']);
-            this.number.set(data['number']);
-            this.email.set(data['email']);
+            this.Name.set(data['name']);
+            this.Number.set(data['number']);
+            this.Email.set(data['email']);
           }
         } catch (err) {
           console.error('Error fetching user data:', err);
@@ -71,20 +71,24 @@ export class App {
       }
     });
   }
-  
-  name = signal('');
-  number = signal('');
-  email = signal('');
+
+  name = '';
+  number = '';
+  email = '';
   password = '';
+  
+  Name = signal('');
+  Number = signal('');
+  Email = signal('');
 
   async register() {
-    if (!this.name || !this.number || !this.email() || !this.password) {
+    if (!this.name || !this.number || !this.email || !this.password) {
       alert('Please enter all details!');
       return;
     }
 
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
-    if (!emailPattern.test(this.email())) {
+    if (!emailPattern.test(this.email)) {
       alert("Please enter a valid email address.");
       return;
     }
@@ -95,15 +99,15 @@ export class App {
     }
 
     const data = {
-      name: this.name(),
-      number: this.number(),
-      email: this.email(),
+      name: this.name,
+      number: this.number,
+      email: this.email,
     };
 
     try {
       this.loading.set(true);
-      await createUserWithEmailAndPassword(this.auth, this.email(), this.password);
-      await setDoc(doc(this.firestore, 'employees', this.email()), data);
+      await createUserWithEmailAndPassword(this.auth, this.email, this.password);
+      await setDoc(doc(this.firestore, 'employees', this.email), data);
       this.loading.set(false);
       alert('Registered successfully!');
     } catch (err) {
