@@ -2,6 +2,8 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZonelessC
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
 
 export const firebaseConfig = {
   projectId: "angular-app-12112",
@@ -14,9 +16,11 @@ export const firebaseConfig = {
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideRouter(routes),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
-    provideAuth(() => getAuth()), provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ]
 };
