@@ -68,3 +68,20 @@ button:active {
         font-size: 24px;
     }
 }
+
+.dashboard-container {
+    margin: 20px auto;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    padding: 30px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+details {
+    text-align: left;
+}
