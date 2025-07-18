@@ -1,0 +1,23 @@
+<div class="container">
+  <p class="heading">Employee Registration Form</p><br>
+  <div class="form-container">
+    <label>Name</label><br>
+    <input [(ngModel)]="name" type="text" placeholder="Enter your name" autocapitalize="words"/><br>
+
+    <label>Phone Number</label><br>
+    <input [(ngModel)]="number" type="tel" placeholder="Enter your phone number"/><br>
+
+    <label>Email</label><br>
+    <input [(ngModel)]="email" type="email" placeholder="Enter your email"/><br>
+
+    <label>Password</label><br>
+    <input [(ngModel)]="password" type="password" placeholder="Enter your password"/><br>
+
+    <button (click)="register()" type="button">
+      <ng-container *ngIf="loading(); else notLoading">
+        <div class="spinner-border" role="status" style="margin-left: 19px; margin-right: 19px; width: 25px; height: 25px"></div>
+      </ng-container>
+      <ng-template #notLoading>Submit</ng-template>
+    </button>
+  </div>
+</div>
